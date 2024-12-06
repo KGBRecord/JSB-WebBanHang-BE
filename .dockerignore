@@ -1,3 +1,7 @@
 .idea
 *.iml
 *.iws
+database
+JSB-WebBanHang-BE.jar
+resource/application-ci.properties
+resource/application-dev.properties

@@ -12,6 +12,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
+database/mysql
 
 ### IntelliJ IDEA ###
 .idea
@@ -28,10 +29,13 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
+.DS_Store
 
 ### VS Code ###
 .vscode/
 
 ### Custom ###
 /image-dir/
-/src/main/java/com/phucanhduong/Test.java
+/src/main/java/com/jsb/Test.java
+
+JSB-WebBanHang-BE.jar

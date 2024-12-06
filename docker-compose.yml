@@ -1,0 +1,13 @@
+services:
+  jsbwbh:
+    image: jsbwbh
+    build: .
+    restart: always
+    ports:
+      - 8085:8085
+    networks:
+      - jsb
+networks:
+  jsb:
+    name: jsb
+    external: true
