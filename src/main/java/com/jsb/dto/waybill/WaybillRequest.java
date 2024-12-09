@@ -20,5 +20,4 @@ public class WaybillRequest {
     private Integer height;
     @Nullable
     private String note;
-    private RequiredNote ghnRequiredNote;
 }

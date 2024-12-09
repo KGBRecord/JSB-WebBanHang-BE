@@ -26,6 +26,4 @@ public class WaybillResponse {
     private Integer height;
     @Nullable
     private String note;
-    private Integer ghnPaymentTypeId;
-    private RequiredNote ghnRequiredNote;
 }

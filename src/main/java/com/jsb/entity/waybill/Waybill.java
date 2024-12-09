@@ -69,13 +69,6 @@ public class Waybill extends BaseEntity {
     @Column(name = "note")
     private String note;
 
-    @Column(name = "ghn_payment_type_id", nullable = false)
-    private Integer ghnPaymentTypeId;
-
-    @Column(name = "ghn_required_note", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private RequiredNote ghnRequiredNote;
-
     @OneToMany(mappedBy = "waybill", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<WaybillLog> waybillLogs = new ArrayList<>();

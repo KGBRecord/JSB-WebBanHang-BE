@@ -88,40 +88,40 @@ public class ClientOrderController {
         return ResponseEntity.status(HttpStatus.CREATED).body(orderService.createClientOrder(request));
     }
 
-    @GetMapping(value = "/success")
-    public RedirectView paymentSuccessAndCaptureTransaction(HttpServletRequest request) {
-        String paypalOrderId = request.getParameter("token");
-        String payerId = request.getParameter("PayerID");
+//    @GetMapping(value = "/success")
+//    public RedirectView paymentSuccessAndCaptureTransaction(HttpServletRequest request) {
+//        String paypalOrderId = request.getParameter("token");
+//        String payerId = request.getParameter("PayerID");
+//
+//        orderService.captureTransactionPaypal(paypalOrderId, payerId);
+//
+//        RedirectView redirectView = new RedirectView();
+//        redirectView.setUrl(AppConstants.FRONTEND_HOST + "/payment/success");
+//        return redirectView;
+//    }
 
-        orderService.captureTransactionPaypal(paypalOrderId, payerId);
-
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl(AppConstants.FRONTEND_HOST + "/payment/success");
-        return redirectView;
-    }
-
-    @GetMapping(value = "/cancel")
-    public RedirectView paymentCancel(HttpServletRequest request) {
-        String paypalOrderId = request.getParameter("token");
-
-        Order order = orderRepository.findByPaypalOrderId(paypalOrderId)
-                .orElseThrow(() -> new ResourceNotFoundException(ResourceName.ORDER, FieldName.PAYPAL_ORDER_ID, paypalOrderId));
-
-        Notification notification = new Notification()
-                .setUser(order.getUser())
-                .setType(NotificationType.CHECKOUT_PAYPAL_CANCEL)
-                .setMessage(String.format("Bạn đã hủy thanh toán PayPal cho đơn hàng %s.", order.getCode()))
-                .setAnchor("/order/detail/" + order.getCode())
-                .setStatus(1);
-
-        notificationRepository.save(notification);
-
-        notificationService.pushNotification(order.getUser().getUsername(),
-                notificationMapper.entityToResponse(notification));
-
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl(AppConstants.FRONTEND_HOST + "/payment/cancel");
-        return redirectView;
-    }
+//    @GetMapping(value = "/cancel")
+//    public RedirectView paymentCancel(HttpServletRequest request) {
+//        String paypalOrderId = request.getParameter("token");
+//
+//        Order order = orderRepository.findByPaypalOrderId(paypalOrderId)
+//                .orElseThrow(() -> new ResourceNotFoundException(ResourceName.ORDER, FieldName.PAYPAL_ORDER_ID, paypalOrderId));
+//
+//        Notification notification = new Notification()
+//                .setUser(order.getUser())
+//                .setType(NotificationType.CHECKOUT_PAYPAL_CANCEL)
+//                .setMessage(String.format("Bạn đã hủy thanh toán PayPal cho đơn hàng %s.", order.getCode()))
+//                .setAnchor("/order/detail/" + order.getCode())
+//                .setStatus(1);
+//
+//        notificationRepository.save(notification);
+//
+//        notificationService.pushNotification(order.getUser().getUsername(),
+//                notificationMapper.entityToResponse(notification));
+//
+//        RedirectView redirectView = new RedirectView();
+//        redirectView.setUrl(AppConstants.FRONTEND_HOST + "/payment/cancel");
+//        return redirectView;
+//    }
 
 }

@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jsb.entity.BaseEntity;
 import com.jsb.entity.address.Address;
 import com.jsb.entity.cart.Cart;
-import com.jsb.entity.chat.Message;
-import com.jsb.entity.chat.Room;
 import com.jsb.entity.client.Preorder;
 import com.jsb.entity.client.Wish;
 import com.jsb.entity.general.Notification;
@@ -103,13 +101,6 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Order> orders = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Message> messages = new ArrayList<>();
-
-    @OneToOne(mappedBy = "user")
-    private Room room;
 
     @OneToOne(mappedBy = "user")
     private Verification verification;

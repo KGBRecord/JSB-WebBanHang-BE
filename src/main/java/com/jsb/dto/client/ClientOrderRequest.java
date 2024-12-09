@@ -29,6 +29,4 @@ public class ClientOrderRequest {
     private BigDecimal tax;
     private BigDecimal shippingCost;
     private BigDecimal totalPay;
-    private String paypalOrderId;
-    private String paypalOrderStatus;
 }

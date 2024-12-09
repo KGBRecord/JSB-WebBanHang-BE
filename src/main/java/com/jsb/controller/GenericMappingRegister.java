@@ -17,8 +17,7 @@ import com.jsb.dto.authentication.UserRequest;
 import com.jsb.dto.authentication.UserResponse;
 import com.jsb.dto.cashbook.PaymentMethodRequest;
 import com.jsb.dto.cashbook.PaymentMethodResponse;
-import com.jsb.dto.chat.RoomRequest;
-import com.jsb.dto.chat.RoomResponse;
+
 import com.jsb.dto.customer.CustomerGroupRequest;
 import com.jsb.dto.customer.CustomerGroupResponse;
 import com.jsb.dto.customer.CustomerRequest;
@@ -101,7 +100,6 @@ import com.jsb.entity.address.Ward;
 import com.jsb.entity.authentication.Role;
 import com.jsb.entity.authentication.User;
 import com.jsb.entity.cashbook.PaymentMethod;
-import com.jsb.entity.chat.Room;
 import com.jsb.entity.customer.Customer;
 import com.jsb.entity.customer.CustomerGroup;
 import com.jsb.entity.customer.CustomerResource;
@@ -142,7 +140,6 @@ import com.jsb.mapper.address.WardMapper;
 import com.jsb.mapper.authentication.RoleMapper;
 import com.jsb.mapper.authentication.UserMapper;
 import com.jsb.mapper.cashbook.PaymentMethodMapper;
-import com.jsb.mapper.chat.RoomMapper;
 import com.jsb.mapper.customer.CustomerGroupMapper;
 import com.jsb.mapper.customer.CustomerMapper;
 import com.jsb.mapper.customer.CustomerResourceMapper;
@@ -183,7 +180,6 @@ import com.jsb.repository.address.WardRepository;
 import com.jsb.repository.authentication.RoleRepository;
 import com.jsb.repository.authentication.UserRepository;
 import com.jsb.repository.cashbook.PaymentMethodRepository;
-import com.jsb.repository.chat.RoomRepository;
 import com.jsb.repository.customer.CustomerGroupRepository;
 import com.jsb.repository.customer.CustomerRepository;
 import com.jsb.repository.customer.CustomerResourceRepository;
@@ -224,7 +220,6 @@ import com.jsb.service.address.ProvinceService;
 import com.jsb.service.inventory.DocketService;
 import com.jsb.service.promotion.PromotionService;
 import com.jsb.service.review.ReviewService;
-import com.jsb.service.waybill.WaybillService;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationContext;
@@ -290,7 +285,6 @@ public class GenericMappingRegister {
     private GenericController<ReviewRequest, ReviewResponse> reviewController;
     private GenericController<PaymentMethodRequest, PaymentMethodResponse> paymentMethodController;
     private GenericController<PromotionRequest, PromotionResponse> promotionController;
-    private GenericController<RoomRequest, RoomResponse> roomController;
     private GenericController<RewardStrategyRequest, RewardStrategyResponse> rewardStrategyController;
 
     // Services
@@ -333,7 +327,6 @@ public class GenericMappingRegister {
     private GenericService<OrderCancellationReason, OrderCancellationReasonRequest, OrderCancellationReasonResponse> orderCancellationReasonService;
     private GenericService<Order, OrderRequest, OrderResponse> orderService;
     private GenericService<PaymentMethod, PaymentMethodRequest, PaymentMethodResponse> paymentMethodService;
-    private GenericService<Room, RoomRequest, RoomResponse> roomService;
     private GenericService<RewardStrategy, RewardStrategyRequest, RewardStrategyResponse> rewardStrategyService;
 
     @PostConstruct
@@ -609,8 +602,6 @@ public class GenericMappingRegister {
                 ResourceName.ORDER
         ), OrderRequest.class);
 
-        register("waybills", waybillController, context.getBean(WaybillService.class), WaybillRequest.class);
-
         register("reviews", reviewController, context.getBean(ReviewService.class), ReviewRequest.class);
 
         register("payment-methods", paymentMethodController, paymentMethodService.init(
@@ -622,12 +613,7 @@ public class GenericMappingRegister {
 
         register("promotions", promotionController, context.getBean(PromotionService.class), PromotionRequest.class);
 
-        register("rooms", roomController, roomService.init(
-                context.getBean(RoomRepository.class),
-                context.getBean(RoomMapper.class),
-                SearchFields.ROOM,
-                ResourceName.ROOM
-        ), RoomRequest.class);
+
 
         register("reward-strategies", rewardStrategyController, rewardStrategyService.init(
                 context.getBean(RewardStrategyRepository.class),
@@ -711,5 +697,4 @@ public class GenericMappingRegister {
                 controller.getClass().getMethod("deleteResources", List.class)
         );
     }
-
 }
