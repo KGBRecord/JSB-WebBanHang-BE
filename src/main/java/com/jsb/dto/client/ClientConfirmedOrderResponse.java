@@ -9,6 +9,4 @@ import com.jsb.entity.cashbook.PaymentMethodType;
 public class ClientConfirmedOrderResponse {
     private String orderCode;
     private PaymentMethodType orderPaymentMethodType;
-    @Nullable
-    private String orderPaypalCheckoutLink;
 }

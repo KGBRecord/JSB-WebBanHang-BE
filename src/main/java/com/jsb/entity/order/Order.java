@@ -111,11 +111,5 @@ public class Order extends BaseEntity {
     @Column(name = "payment_status", nullable = false, columnDefinition = "TINYINT")
     private Integer paymentStatus;
 
-    @Column(name = "paypal_order_id")
-    private String paypalOrderId;
-
-    @Column(name = "paypal_order_status")
-    private String paypalOrderStatus;
-
     // vouchers: List<Voucher>
 }

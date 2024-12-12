@@ -52,7 +52,5 @@ public interface ResourceName {
     String CART = "Cart";
     String PAYMENT_METHOD = "PaymentMethod";
     String PROMOTION = "Promotion";
-    String ROOM = "Room";
-    String MESSAGE = "Message";
     String REWARD_STRATEGY = "RewardStrategy";
 }

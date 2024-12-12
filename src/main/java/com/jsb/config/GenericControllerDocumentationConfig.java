@@ -66,7 +66,6 @@ public class GenericControllerDocumentationConfig {
                 .and(generateRoute("reviews"))
                 .and(generateRoute("payment-methods"))
                 .and(generateRoute("promotions"))
-                .and(generateRoute("rooms"))
                 .and(generateRoute("reward-strategies"));
     }
 

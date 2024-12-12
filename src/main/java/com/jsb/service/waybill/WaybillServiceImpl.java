@@ -56,7 +56,7 @@ import java.util.StringJoiner;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class WaybillServiceImpl implements WaybillService {
+class WaybillServiceImpl implements WaybillService {
 
     @Value("${app.shipping.ghnToken}")
     private String ghnToken;

@@ -9,6 +9,4 @@ public interface OrderService {
 
     ClientConfirmedOrderResponse createClientOrder(ClientSimpleOrderRequest request);
 
-    void captureTransactionPaypal(String paypalOrderId, String payerId);
-
 }

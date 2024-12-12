@@ -400,17 +400,6 @@ public interface SearchFields {
             "name"
     );
 
-    List<String> MESSAGE = List.of(
-            "createdAt",
-            "room.id"
-    );
-
-    List<String> ROOM = List.of(
-            "id",
-            "name",
-            "user.id"
-    );
-
     List<String> REWARD_STRATEGY = List.of(
             "name",
             "code",

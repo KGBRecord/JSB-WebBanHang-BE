@@ -15,7 +15,6 @@ import com.jsb.entity.address.District;
 import com.jsb.entity.address.Province;
 import com.jsb.entity.address.Ward;
 import com.jsb.entity.authentication.User;
-import com.jsb.entity.chat.Room;
 import com.jsb.entity.customer.Customer;
 import com.jsb.entity.customer.CustomerGroup;
 import com.jsb.entity.customer.CustomerResource;
@@ -133,8 +132,6 @@ public abstract class MapperUtils {
     public abstract Customer mapToCustomer(Long id);
 
     public abstract Order mapToOrder(Long id);
-
-    public abstract Room mapToRoom(Long id);
 
     public Variant mapToVariant(Long id) {
         return variantRepository.getById(id);
