@@ -8,8 +8,6 @@ import com.jsb.entity.client.Preorder;
 import com.jsb.entity.client.Wish;
 import com.jsb.entity.general.Notification;
 import com.jsb.entity.order.Order;
-import com.jsb.entity.review.Review;
-import com.jsb.entity.reward.RewardLog;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -89,9 +87,6 @@ public class User extends BaseEntity {
     private List<Preorder> preorders = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
-    private List<Review> reviews = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
     private List<Notification> notifications = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -108,6 +103,4 @@ public class User extends BaseEntity {
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
 
-    @OneToMany(mappedBy = "user")
-    private List<RewardLog> rewardLogs = new ArrayList<>();
 }

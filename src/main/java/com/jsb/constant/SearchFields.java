@@ -382,15 +382,6 @@ public interface SearchFields {
             "order.code"
     );
 
-    List<String> REVIEW = List.of(
-            "user.username",
-            "user.fullname",
-            "product.name",
-            "product.code",
-            "product.slug",
-            "content"
-    );
-
     List<String> PAYMENT_METHOD = List.of(
             "name",
             "code"
@@ -400,9 +391,4 @@ public interface SearchFields {
             "name"
     );
 
-    List<String> REWARD_STRATEGY = List.of(
-            "name",
-            "code",
-            "formula"
-    );
 }

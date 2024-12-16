@@ -13,8 +13,6 @@ import com.jsb.repository.product.BrandRepository;
 import com.jsb.repository.product.ProductRepository;
 import com.jsb.repository.product.SupplierRepository;
 import com.jsb.repository.promotion.PromotionRepository;
-import com.jsb.repository.review.ReviewProjectionRepository;
-import com.jsb.repository.review.ReviewRepository;
 import com.jsb.repository.waybill.WaybillProjectionRepository;
 import com.jsb.repository.waybill.WaybillRepository;
 
@@ -31,11 +29,9 @@ public class StatisticServiceImpl implements StatisticService {
     private PromotionRepository promotionRepository;
     private SupplierRepository supplierRepository;
     private BrandRepository brandRepository;
-    private ReviewRepository reviewRepository;
     private UserProjectionRepository userProjectionRepository;
     private OrderProjectionRepository orderProjectionRepository;
     private WaybillProjectionRepository waybillProjectionRepository;
-    private ReviewProjectionRepository reviewProjectionRepository;
 
     @Override
     public StatisticResponse getStatistic() {
@@ -52,7 +48,6 @@ public class StatisticServiceImpl implements StatisticService {
 
         List<StatisticResource> statisticRegistration = userProjectionRepository.getUserCountByCreateDate();
         List<StatisticResource> statisticOrder = orderProjectionRepository.getOrderCountByCreateDate();
-        List<StatisticResource> statisticReview = reviewProjectionRepository.getReviewCountByCreateDate();
         List<StatisticResource> statisticWaybill = waybillProjectionRepository.getWaybillCountByCreateDate();
 
         statisticResponse.setTotalCustomer(totalCustomer);
@@ -64,7 +59,6 @@ public class StatisticServiceImpl implements StatisticService {
         statisticResponse.setTotalBrand(totalBrand);
         statisticResponse.setStatisticRegistration(statisticRegistration);
         statisticResponse.setStatisticOrder(statisticOrder);
-        statisticResponse.setStatisticReview(statisticReview);
         statisticResponse.setStatisticWaybill(statisticWaybill);
 
         return statisticResponse;

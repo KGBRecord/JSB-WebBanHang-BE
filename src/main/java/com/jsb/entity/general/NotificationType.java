@@ -5,6 +5,5 @@ public enum NotificationType {
     ERROR,
     WARNING,
     PREORDER,
-    REVIEW,
     ORDER,
 }

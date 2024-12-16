@@ -27,7 +27,6 @@ import com.jsb.mapper.client.ClientProductMapper;
 import com.jsb.projection.inventory.SimpleProductInventory;
 import com.jsb.repository.ProjectionRepository;
 import com.jsb.repository.product.ProductRepository;
-import com.jsb.repository.review.ReviewRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +40,6 @@ public class ClientProductController {
     private ProductRepository productRepository;
     private ProjectionRepository projectionRepository;
     private ClientProductMapper clientProductMapper;
-    private ReviewRepository reviewRepository;
 
     @GetMapping
     public ResponseEntity<ListResponse<ClientListedProductResponse>> getAllProducts(
@@ -77,9 +75,6 @@ public class ClientProductController {
         List<SimpleProductInventory> productInventories = projectionRepository
                 .findSimpleProductInventories(List.of(product.getId()));
 
-        int averageRatingScore = reviewRepository.findAverageRatingScoreByProductId(product.getId());
-        int countReviews = reviewRepository.countByProductId(product.getId());
-
         // Related Products
         Page<Product> relatedProducts = productRepository.findByParams(
                 String.format("category.id==%s;id!=%s",
@@ -103,7 +98,7 @@ public class ClientProductController {
 
         // Result
         ClientProductResponse clientProductResponse = clientProductMapper
-                .entityToResponse(product, productInventories, averageRatingScore, countReviews, relatedProductResponses);
+                .entityToResponse(product, productInventories, relatedProductResponses);
 
         return ResponseEntity.status(HttpStatus.OK).body(clientProductResponse);
     }

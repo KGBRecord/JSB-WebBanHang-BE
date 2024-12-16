@@ -15,6 +15,5 @@ public class StatisticResponse {
     private Integer totalBrand;
     private List<StatisticResource> statisticRegistration;
     private List<StatisticResource> statisticOrder;
-    private List<StatisticResource> statisticReview;
     private List<StatisticResource> statisticWaybill;
 }

@@ -30,7 +30,6 @@ import com.jsb.repository.order.OrderRepository;
 import com.jsb.repository.waybill.WaybillLogRepository;
 import com.jsb.repository.waybill.WaybillRepository;
 import com.jsb.service.general.NotificationService;
-import com.jsb.utils.RewardUtils;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -72,7 +71,6 @@ class WaybillServiceImpl implements WaybillService {
     private final NotificationRepository notificationRepository;
     private final NotificationMapper notificationMapper;
     private final WaybillLogRepository waybillLogRepository;
-    private final RewardUtils rewardUtils;
 
     @Override
     public ListResponse<WaybillResponse> findAll(int page, int size, String sort, String filter, String search, boolean all) {
@@ -354,8 +352,6 @@ class WaybillServiceImpl implements WaybillService {
                         // cũng có nghĩa khách hàng đã thanh toán tiền mặt)
                         order.setPaymentStatus(2);
 
-                        // Tích điểm
-                        rewardUtils.successOrderHook(order);
                         break;
                     case WaybillCallbackConstants.FAILED:
                     case WaybillCallbackConstants.RETURN:

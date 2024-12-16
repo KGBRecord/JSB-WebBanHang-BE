@@ -87,10 +87,6 @@ import com.jsb.dto.product.VariantRequest;
 import com.jsb.dto.product.VariantResponse;
 import com.jsb.dto.promotion.PromotionRequest;
 import com.jsb.dto.promotion.PromotionResponse;
-import com.jsb.dto.review.ReviewRequest;
-import com.jsb.dto.review.ReviewResponse;
-import com.jsb.dto.reward.RewardStrategyRequest;
-import com.jsb.dto.reward.RewardStrategyResponse;
 import com.jsb.dto.waybill.WaybillRequest;
 import com.jsb.dto.waybill.WaybillResponse;
 import com.jsb.entity.address.Address;
@@ -132,7 +128,6 @@ import com.jsb.entity.product.Supplier;
 import com.jsb.entity.product.Tag;
 import com.jsb.entity.product.Unit;
 import com.jsb.entity.product.Variant;
-import com.jsb.entity.reward.RewardStrategy;
 import com.jsb.mapper.address.AddressMapper;
 import com.jsb.mapper.address.DistrictMapper;
 import com.jsb.mapper.address.WardMapper;
@@ -172,7 +167,6 @@ import com.jsb.mapper.product.SupplierMapper;
 import com.jsb.mapper.product.TagMapper;
 import com.jsb.mapper.product.UnitMapper;
 import com.jsb.mapper.product.VariantMapper;
-import com.jsb.mapper.reward.RewardStrategyMapper;
 import com.jsb.repository.address.AddressRepository;
 import com.jsb.repository.address.DistrictRepository;
 import com.jsb.repository.address.WardRepository;
@@ -212,13 +206,11 @@ import com.jsb.repository.product.SupplierRepository;
 import com.jsb.repository.product.TagRepository;
 import com.jsb.repository.product.UnitRepository;
 import com.jsb.repository.product.VariantRepository;
-import com.jsb.repository.reward.RewardStrategyRepository;
 import com.jsb.service.CrudService;
 import com.jsb.service.GenericService;
 import com.jsb.service.address.ProvinceService;
 import com.jsb.service.inventory.DocketService;
 import com.jsb.service.promotion.PromotionService;
-import com.jsb.service.review.ReviewService;
 import com.jsb.service.waybill.WaybillService;
 
 import lombok.AllArgsConstructor;
@@ -282,10 +274,8 @@ public class GenericMappingRegister {
     private GenericController<OrderCancellationReasonRequest, OrderCancellationReasonResponse> orderCancellationReasonController;
     private GenericController<OrderRequest, OrderResponse> orderController;
     private GenericController<WaybillRequest, WaybillResponse> waybillController;
-    private GenericController<ReviewRequest, ReviewResponse> reviewController;
     private GenericController<PaymentMethodRequest, PaymentMethodResponse> paymentMethodController;
     private GenericController<PromotionRequest, PromotionResponse> promotionController;
-    private GenericController<RewardStrategyRequest, RewardStrategyResponse> rewardStrategyController;
 
     // Services
     private GenericService<District, DistrictRequest, DistrictResponse> districtService;
@@ -327,7 +317,6 @@ public class GenericMappingRegister {
     private GenericService<OrderCancellationReason, OrderCancellationReasonRequest, OrderCancellationReasonResponse> orderCancellationReasonService;
     private GenericService<Order, OrderRequest, OrderResponse> orderService;
     private GenericService<PaymentMethod, PaymentMethodRequest, PaymentMethodResponse> paymentMethodService;
-    private GenericService<RewardStrategy, RewardStrategyRequest, RewardStrategyResponse> rewardStrategyService;
 
     @PostConstruct
     public void registerControllers() throws NoSuchMethodException {
@@ -604,7 +593,6 @@ public class GenericMappingRegister {
 
         register("waybills", waybillController, context.getBean(WaybillService.class), WaybillRequest.class);
 
-        register("reviews", reviewController, context.getBean(ReviewService.class), ReviewRequest.class);
 
         register("payment-methods", paymentMethodController, paymentMethodService.init(
                 context.getBean(PaymentMethodRepository.class),
@@ -614,13 +602,6 @@ public class GenericMappingRegister {
         ), PaymentMethodRequest.class);
 
         register("promotions", promotionController, context.getBean(PromotionService.class), PromotionRequest.class);
-
-        register("reward-strategies", rewardStrategyController, rewardStrategyService.init(
-                context.getBean(RewardStrategyRepository.class),
-                context.getBean(RewardStrategyMapper.class),
-                SearchFields.REWARD_STRATEGY,
-                ResourceName.REWARD_STRATEGY
-        ), RewardStrategyRequest.class);
 
     }
 

@@ -8,7 +8,6 @@ import com.jsb.entity.client.Preorder;
 import com.jsb.entity.client.Wish;
 import com.jsb.entity.general.Image;
 import com.jsb.entity.promotion.Promotion;
-import com.jsb.entity.review.Review;
 import com.jsb.utils.JsonNodeConverter;
 
 import lombok.AllArgsConstructor;
@@ -119,9 +118,6 @@ public class Product extends BaseEntity {
 
     @OneToMany(mappedBy = "product")
     private List<Preorder> preorders = new ArrayList<>();
-
-    @OneToMany(mappedBy = "product")
-    private List<Review> reviews = new ArrayList<>();
 
     @ManyToMany(mappedBy = "products")
     private Set<Promotion> promotions = new HashSet<>();

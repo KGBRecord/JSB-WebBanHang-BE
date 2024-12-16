@@ -47,10 +47,8 @@ public interface ResourceName {
     String ORDER_VARIANT = "OrderVariant";
     String WAYBILL = "Waybill";
     String PREORDER = "Preorder";
-    String REVIEW = "Review";
     String NOTIFICATION = "Notification";
     String CART = "Cart";
     String PAYMENT_METHOD = "PaymentMethod";
     String PROMOTION = "Promotion";
-    String REWARD_STRATEGY = "RewardStrategy";
 }

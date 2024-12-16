@@ -19,7 +19,6 @@ import com.jsb.entity.general.Image;
 import com.jsb.entity.order.Order;
 import com.jsb.entity.order.OrderVariant;
 import com.jsb.entity.waybill.WaybillLog;
-import com.jsb.repository.review.ReviewRepository;
 import com.jsb.utils.MapperUtils;
 
 import java.util.List;
@@ -27,8 +26,6 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = MapperUtils.class)
 public abstract class ClientOrderMapper {
 
-    @Autowired
-    private ReviewRepository reviewRepository;
 
     @Mapping(source = "id", target = "orderId")
     @Mapping(source = "createdAt", target = "orderCreatedAt")
@@ -84,8 +81,6 @@ public abstract class ClientOrderMapper {
 
         for (var clientOrderVariantResponse : clientOrderDetailResponse.getOrderItems()) {
             var productId = clientOrderVariantResponse.getOrderItemVariant().getVariantProduct().getProductId();
-            var productIsReviewed = reviewRepository.existsByProductIdAndUsername(productId, username);
-            clientOrderVariantResponse.getOrderItemVariant().getVariantProduct().setProductIsReviewed(productIsReviewed);
         }
 
         return clientOrderDetailResponse;

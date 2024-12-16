@@ -28,8 +28,6 @@ public class ClientProductResponse {
     private JsonNode productSpecifications;
     private List<ClientVariantResponse> productVariants;
     private boolean productSaleable;
-    private int productAverageRatingScore;
-    private int productCountReviews;
     private List<ClientListedProductResponse> productRelatedProducts;
     @Nullable
     private ClientPromotionResponse productPromotion;

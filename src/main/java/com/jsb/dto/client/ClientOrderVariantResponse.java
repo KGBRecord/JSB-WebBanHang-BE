@@ -27,7 +27,6 @@ public class ClientOrderVariantResponse {
             private String productSlug;
             @Nullable
             private String productThumbnail;
-            private boolean productIsReviewed;
         }
     }
 }

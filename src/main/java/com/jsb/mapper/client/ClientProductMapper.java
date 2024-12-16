@@ -78,8 +78,6 @@ public class ClientProductMapper {
 
     public ClientProductResponse entityToResponse(Product product,
                                                   List<SimpleProductInventory> productInventories,
-                                                  int averageRatingScore,
-                                                  int countReviews,
                                                   List<ClientListedProductResponse> relatedProductResponses) {
         ClientProductResponse clientProductResponse = new ClientProductResponse();
 
@@ -108,8 +106,6 @@ public class ClientProductMapper {
                 .findAny()
                 .map(productInventory -> productInventory.getCanBeSold() > 0)
                 .orElse(false));
-        clientProductResponse.setProductAverageRatingScore(averageRatingScore);
-        clientProductResponse.setProductCountReviews(countReviews);
         clientProductResponse.setProductRelatedProducts(relatedProductResponses);
         clientProductResponse.setProductPromotion(promotionRepository
                 .findActivePromotionByProductId(product.getId())
