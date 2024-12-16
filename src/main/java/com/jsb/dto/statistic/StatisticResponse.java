@@ -10,7 +10,6 @@ public class StatisticResponse {
     private Integer totalProduct;
     private Integer totalOrder;
     private Integer totalWaybill;
-    private Integer totalReview;
     private Integer totalActivePromotion;
     private Integer totalSupplier;
     private Integer totalBrand;
